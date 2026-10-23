@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Du wurdest gehackt 😱</title>
+<style>
+  body { margin:0; background:#000; color:#0f0; font-family:monospace;
+         height:100vh; overflow:hidden; display:flex; align-items:center;
+         justify-content:center; text-align:center; }
+  #start { padding:20px; }
+  button { background:#f00; color:#fff; border:none; padding:15px 30px;
+           font-size:1.2em; border-radius:8px; cursor:pointer; }
+  #term { display:none; white-space:pre-wrap; text-align:left;
+          font-size:1.1em; padding:20px; }
+  #prank { display:none; font-size:2em; color:#ff0; padding:20px; }
+</style>
+</head>
+<body>
+<div id="start">
+  <h2>🔥 EXKLUSIV: Wahrheit über dich geleakt 😳</h2>
+  <p>Nur für dich. Draufklicken um zu sehen...</p>
+  <button onclick="start()">ANZEIGEN</button>
+</div>
+<div id="term"></div>
+<div id="prank">😂 GEROLLT BRO!<br>Alles fake, entspann dich 🤣</div>
+
+<script>
+const lines = [
+"> Verbindung wird hergestellt...\n",
+"> Gerät gefunden: [ZIEL-DEVICE]\n",
+"> Zugriff auf Kamera... ERLEDIGT 📸\n",
+"> Lade komplette Bildergalerie... 100%\n",
+"> Durchsuche Chatverläufe... ERLEDIGT\n",
+"> Alle Daten werden in 10 Sekunden GELOSCHT\n",
+"> 10... 9... 8... 7... 6...\n"
+];
+function popups() {
+  for (let i = 0; i < 30; i++) {
+    setTimeout(() => alert("⚠️ HACKER-ALARM: System kompromittiert!"), i * 250);
+  }
+  setTimeout(() => {
+    document.getElementById("term").style.display = "none";
+    document.getElementById("prank").style.display = "block";
+    document.title = "GEROLLT 😂";
+  }, 30 * 250 + 3000);
+}
+function start() {
+  document.getElementById("start").style.display = "none";
+  const t = document.getElementById("term");
+  t.style.display = "block";
+  let i = 0;
+  const iv = setInterval(() => {
+    if (i >= lines.length) { clearInterval(iv); popups(); return; }
+    t.textContent += lines[i++];
+  }, 800);
+}
+</script>
+</body>
+</html>
